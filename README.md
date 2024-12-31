@@ -1,0 +1,1 @@
+Just install all dependecies of the react and put the api.php in htcdocs after it start your apache server on xampp and mysql . The databases should be generated automaticaly and the passowrd of access look in code 
