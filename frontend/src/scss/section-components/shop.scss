@@ -1,0 +1,153 @@
+@use './../home.scss' as *;
+
+.shop {
+  margin-top: 100px;
+
+  &-title-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .title {
+      @include anton-regular();
+      font-size: 60px;
+      color: #151414;
+    }
+
+    .title-link {
+      text-decoration: underline;
+      font-size: 20px;
+      @include inter-class(700);
+      color: #151414;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+  }
+
+  &-catalog {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 70px;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 300px;
+
+      &-img {
+        background-color: #F6F6F6;
+        padding: 55px 0 60px 0;
+
+        img {
+          max-width: 280px;
+          /* Instead of rotate: 15deg; use transform for proper CSS syntax */
+          transform: rotate(15deg);
+        }
+      }
+
+      /* Product info */
+      .shop-catalog-item-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 20px;
+
+        .title-item {
+          @include inter-class(700);
+          margin-bottom: 0;
+        }
+
+        .category-item {
+          @include inter-class(400);
+          margin-bottom: 0;
+        }
+
+        .price-item {
+          @include inter-class(700);
+          margin-bottom: 0;
+        }
+      }
+
+      /* SIZES BLOCK: HIDDEN BY DEFAULT WITH TRANSITION */
+      .sizes {
+        /* 1) Start with zero height, invisible, no pointer events */
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;        /* ensures content doesn’t overflow while hidden */
+        pointer-events: none;    /* no clicks when hidden */
+        
+        /* 2) Transition properties for a smooth open/close */
+        transition:
+        max-height 0.4s ease-in-out,
+        opacity 0.4s ease-in-out,
+        visibility 0.4s ease-in-out;
+        
+        /* BASIC LAYOUT */
+        margin-top: auto;
+        align-items: center;
+        flex-direction: column;
+        gap: 8px;
+
+        p {
+          @include inter-class(700);
+        }
+
+        .size-buttons {
+          display: flex;
+          gap: 8px;
+          padding: 10px;
+
+          .size-button {
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #F6F6F6;
+            cursor: pointer;       /* show pointer on hover */
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+            &:hover {
+              background-color: #151414;
+              color: #fff;
+              border-color: #151414;
+            }
+          }
+        }
+
+        .add-to-cart {
+          padding: 15px 60px;
+          font-size: 20px;
+          @include anton-regular();
+          background-color: #151414;
+          color: #fff;
+          border: 1px solid #151414;
+          cursor: pointer; /* pointer on hover */
+          transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+          &:hover {
+            color: #151414;
+            background-color: #fff;
+            border: 1px solid #151414;
+          }
+        }
+      }
+
+      /* WHEN HOVER ON THE ENTIRE ITEM, SHOW SIZES */
+      &:hover {
+        .sizes {
+          /* 1) Reveal the block by giving it a large enough max-height */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          max-height: 1000px;  /* just needs to be larger than the content height */
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto; /* restore pointer events so user can click buttons */
+        }
+      }
+    }
+  }
+}

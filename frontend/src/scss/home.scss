@@ -1,0 +1,19 @@
+@use '~bootstrap/scss/bootstrap' as *;
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@mixin inter-class($weight) {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-weight: $weight;
+  font-style: normal;
+}
+
+  @mixin anton-regular {
+    font-family: "Anton", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+.container-fluid{
+    height: 100vh;
+    max-width: 100vw;
+    padding: 0 60px;
+}

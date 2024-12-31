@@ -1,0 +1,120 @@
+@use '../home.scss' as *; 
+// (assuming you have some mixins like inter-class(), anton-regular(), etc.)
+
+.landpage {
+  // Pull full-width background outside the parent’s 60px padding:
+  margin-left: -60px;
+  margin-right: -60px;
+  background-color: #72B778;  // Green background
+  width: calc(100% + 120px);  // or just 100% if you prefer
+  display: flex;
+  justify-content: space-between; 
+  position: relative;
+  padding-bottom: 60px;
+  &-content {
+    margin-left: 60px;   // push content back inside
+    margin-top: 60px;    // optional top space
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+
+    &-title {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      @include anton-regular();
+
+      .title {
+        font-size: 140px;
+        color: #fff;
+        line-height: 160%;
+      }
+
+      .title-w-bg {
+        background-color: #E5BE67;
+        font-size: 140px;
+        padding: 27px 48px 26px 30px;
+        color: #151414;
+        width: fit-content;
+      }
+    }
+
+    .landpage-text {
+      max-width: 470px;
+      color: #fff;
+      line-height: 136%;
+      font-size: 20px;
+      @include inter-class(500);
+    }
+
+    .button-shop {
+      background-color: #fff; 
+      color: #000;
+      border: none;
+      font-size: 60px;
+      font-weight: 700;
+      padding: 15px 25px;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease;
+      @include anton-regular();
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  &-hero {
+    flex: 1;
+    position: relative;
+    margin-right: 60px;  
+    margin-top: 60px;    
+    max-width: 684px;
+    height: 684px;
+    background-color: #E5BE67; // same color or whichever
+    border-radius: 50%;
+    .back-transparent-circle {
+      position: absolute;
+      top: 83%;   // center vertically
+      left: 82%;  // center horizontally
+      width: 214px;
+      height: 214px;
+      background-color: rgba(229, 190, 103, 0.5);      ; 
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1; // behind the shoe
+    }
+
+    .landpage-circle-limited {
+      position: absolute;
+      top: 18%;  
+      left: 10%;
+      width: 177px;
+      height: 177px;
+      background-color: #4A6634;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2; // in front of transparent circle, behind shoe
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      
+    }
+
+    .shoes {
+      position: relative; 
+      top:81px;
+      right: 200px;
+      z-index: 3;        
+
+      img {
+        width: 800px;
+        display: block;
+        transform: rotate(-5deg); // slight tilt if you like
+      }
+    }
+  }
+}
